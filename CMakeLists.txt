@@ -17,7 +17,9 @@ find_package(Qt6 COMPONENTS
 add_executable(qtInClion2 main.cpp
         sourceFile/textGetter.cpp
         headerFile/textGetter.h
-        sourceFile/textGetter.ui)
+        sourceFile/textGetter.ui
+        lib/recources.qrc
+)
 target_link_libraries(qtInClion2
         Qt::Core
         Qt::Gui
@@ -26,6 +28,7 @@ target_link_libraries(qtInClion2
 target_include_directories(qtInClion2 PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/qtInClion2autogen/include/
         headerFile
         sourceFile
+        lib
 )
 
 if (WIN32 AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)

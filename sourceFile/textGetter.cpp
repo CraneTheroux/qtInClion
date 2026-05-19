@@ -12,6 +12,11 @@
 #include<QStringConverter>
 textGetter::textGetter(QWidget *parent) : QWidget(parent), ui(new Ui::textGetter) {
     ui->setupUi(this);
+    /*
+     * 上按钮图案流程：1.在lib文件夹中创建recources.qrc;2.编写qrc文件。3.在cmakelist中添加add_exetuable   lib/resource.qrc
+     * 4.使用setIcon方法，文件路径为":/名称.png"
+     */
+    ui->commitButton->setIcon(QPixmap(":/cat.png"));
     connect(ui->commitButton,&QPushButton::clicked,[this]() {
         //打开此电脑，获取需要打开的文件目录
         QString path = QFileDialog::getOpenFileName(this,"C:\\Users\\austincrane");
@@ -36,7 +41,8 @@ textGetter::textGetter(QWidget *parent) : QWidget(parent), ui(new Ui::textGetter
         file.close();
         //文件大小信息获取方式
         QFileInfo info(path);
-        qDebug()<<"size:"<<info.size()<<",Create date:"<<info.birthTime();
+        double sizeResultConvertInToMB = info.size()/(1000.0*1000.0);
+        qDebug()<<"size:"<<sizeResultConvertInToMB<<",Create date:"<<info.birthTime()<<",type:"<<info.suffix();
 
 
     });
