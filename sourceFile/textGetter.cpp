@@ -8,6 +8,7 @@
 #include "ui_textGetter.h"
 #include<QFileDialog>
 #include<QFile>
+#include<QFileInfo>
 #include<QStringConverter>
 textGetter::textGetter(QWidget *parent) : QWidget(parent), ui(new Ui::textGetter) {
     ui->setupUi(this);
@@ -31,6 +32,13 @@ textGetter::textGetter(QWidget *parent) : QWidget(parent), ui(new Ui::textGetter
         QString textReal = QString::fromUtf8(textArray);
         //在界面进行输出
         ui->textEdit->setText(textArray);
+
+        file.close();
+        //文件大小信息获取方式
+        QFileInfo info(path);
+        qDebug()<<"size:"<<info.size()<<",Create date:"<<info.birthTime();
+
+
     });
 }
 
