@@ -14,7 +14,7 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(qtInClion2 main.cpp
+add_executable(qtInClion2 qtPracticeOfGame/main.cpp
         sourceFile/textGetter.cpp
         headerFile/textGetter.h
         sourceFile/textGetter.ui
